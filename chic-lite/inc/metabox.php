@@ -34,36 +34,47 @@ function chic_lite_add_sidebar_layout_box(){
 }
 add_action( 'add_meta_boxes', 'chic_lite_add_sidebar_layout_box' );
 
-$chic_lite_sidebar_layout = array(    
-    'default-sidebar'=> array(
-         'value'     => 'default-sidebar',
-         'label'     => __( 'Default Sidebar', 'chic-lite' ),
-         'thumbnail' => esc_url( get_template_directory_uri() . '/images/default-sidebar.png' ),
-    ),
-    'no-sidebar'     => array(
-         'value'     => 'no-sidebar',
-         'label'     => __( 'Full Width', 'chic-lite' ),
-         'thumbnail' => esc_url( get_template_directory_uri() . '/images/full-width.png' ),
-    ),  
-    'centered'     => array(
-         'value'     => 'centered',
-         'label'     => __( 'Full Width Centered', 'chic-lite' ),
-         'thumbnail' => esc_url( get_template_directory_uri() . '/images/full-width-centered.png' ),
-    ),         
-    'left-sidebar' => array(
-         'value'     => 'left-sidebar',
-         'label'     => __( 'Left Sidebar', 'chic-lite' ),
-         'thumbnail' => esc_url( get_template_directory_uri() . '/images/left-sidebar.png' ),         
-    ),
-    'right-sidebar' => array(
-         'value'     => 'right-sidebar',
-         'label'     => __( 'Right Sidebar', 'chic-lite' ),
-         'thumbnail' => esc_url( get_template_directory_uri() . '/images/right-sidebar.png' ),         
-     )    
-);
+/**
+ * Get Sidebar Layout Data
+ *
+ * @return array
+ */
+if( ! function_exists( 'chic_lite_get_sidebar_layout_data' ) ){
+    function chic_lite_get_sidebar_layout_data(){
+        return array(
+            'default-sidebar'=> array(
+                'value'     => 'default-sidebar',
+                'label'     => __( 'Default Sidebar', 'chic-lite' ),
+                'thumbnail' => esc_url( get_template_directory_uri() . '/images/default-sidebar.png' ),
+            ),
+            'no-sidebar'     => array(
+                'value'     => 'no-sidebar',
+                'label'     => __( 'Full Width', 'chic-lite' ),
+                'thumbnail' => esc_url( get_template_directory_uri() . '/images/full-width.png' ),
+            ),  
+            'centered'     => array(
+                'value'     => 'centered',
+                'label'     => __( 'Full Width Centered', 'chic-lite' ),
+                'thumbnail' => esc_url( get_template_directory_uri() . '/images/full-width-centered.png' ),
+            ),         
+            'left-sidebar' => array(
+                'value'     => 'left-sidebar',
+                'label'     => __( 'Left Sidebar', 'chic-lite' ),
+                'thumbnail' => esc_url( get_template_directory_uri() . '/images/left-sidebar.png' ),         
+            ),
+            'right-sidebar' => array(
+                'value'     => 'right-sidebar',
+                'label'     => __( 'Right Sidebar', 'chic-lite' ),
+                'thumbnail' => esc_url( get_template_directory_uri() . '/images/right-sidebar.png' ),         
+            )   
+        );
+    }
+}
+
 
 function chic_lite_sidebar_layout_callback(){
-    global $post , $chic_lite_sidebar_layout;
+    global $post; 
+    $chic_lite_sidebar_layout = chic_lite_get_sidebar_layout_data();
     wp_nonce_field( basename( __FILE__ ), 'chic_lite_nonce' ); ?> 
     <table class="form-table">
         <tr>
@@ -91,7 +102,8 @@ function chic_lite_sidebar_layout_callback(){
 }
 
 function chic_lite_save_sidebar_layout( $post_id ){
-    global $chic_lite_sidebar_layout;
+    $chic_lite_sidebar_layout = chic_lite_get_sidebar_layout_data();
+
 
     // Verify the nonce before proceeding.
     if( !isset( $_POST[ 'chic_lite_nonce' ] ) || !wp_verify_nonce( $_POST[ 'chic_lite_nonce' ], basename( __FILE__ ) ) )
