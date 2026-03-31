@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chic Lite 1.1.7\n"
+"Project-Id-Version: Chic Lite 1.1.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/chic-lite\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1847,10 +1847,6 @@ msgstr ""
 
 #: inc/tgmpa/recommended-plugins.php:61
 msgid "Smash Balloon Social Photo Feed"
-msgstr ""
-
-#: inc/tgmpa/recommended-plugins.php:66
-msgid "AffiliateX"
 msgstr ""
 
 #: inc/tgmpa/recommended-plugins.php:71

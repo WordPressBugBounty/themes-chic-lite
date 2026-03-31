@@ -34,3 +34,13 @@
     margin-left:  0;
     margin-right: 8px;
 }
+
+#accordion-section-chic_lite_page_view_pro .accordion-section-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#accordion-section-chic_lite_page_view_pro .accordion-section-title::after{
+   content: none;
+}

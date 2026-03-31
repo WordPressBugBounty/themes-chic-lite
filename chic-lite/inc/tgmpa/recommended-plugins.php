@@ -62,11 +62,6 @@ function chic_lite_register_required_plugins() {
 			'slug'      => 'instagram-feed',
 			'required'  => false,
 		),
-		array(
-			'name'      => __( 'AffiliateX', 'chic-lite' ),
-			'slug'      => 'affiliatex',
-			'required'  => false,
-		),
         array(
 			'name'      => __( 'Regenerate Thumbnails', 'chic-lite' ),
 			'slug'      => 'regenerate-thumbnails',
